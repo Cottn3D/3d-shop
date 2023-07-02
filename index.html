@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D-Shop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--IMPORTS MODEL-VIEWER PKG -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="nav">
+	<button id="logo">3D-Shop</button>
+	<input type="text" placeholder="      Search..">
+	<button id="cart">
+		<img src="assets/images/cart.png" alt="buttonpng">
+	</button>
+</div>
+
+<!-- CONTAINER -->
+<div id="main">
+
+	<!-- TOP SECTION -->
+	<div id="top">
+		
+		<!-- INTERACT -->
+		<div id="topLeft">
+			
+			<!-- CONTROLS -->
+			<model-viewer				
+				id="model"
+				src="assets/models/Charger.glb"  
+				poster="assets/images/poster.webp" 
+				alt="Interactive Model of a Charging Block"
+				environment-image="legacy"
+				exposure="0.85"
+				shadow-intensity="1" 
+				shadow-softness=".8" 
+				camera-orbit="60deg"
+				camera-controls 
+				ar  
+				ar-modes="webxr scene-viewer quick-look">
+				
+				<button class="hotspot" slot="hotspot-prongs" data-surface="1 0 1810 1687 1813 0.162 0.695 0.143" data-visibility-attribute="visible">
+					<div class="annotation">Certified Safety - ETL, FCC, CE, ROHS certificated. Multi-charging protection keeps your device safe from over-current over-voltage over-heating & short-circuiting. exhaustive protection while charging. </div>
+				</button>
+				<button class="hotspot" slot="hotspot-body" data-surface="0 0 541 255 1 0.490 0.226 0.284" data-visibility-attribute="visible">
+					<div class="annotation">Compact & Portable - 0.86 inch Ultra-thin design and lightweight ensure maximum portability wherever you want to go. offers fast and efficient charging at home, in the office, or on the go. </div>
+				</button>
+				<button class="hotspot" slot="hotspot-jack" data-surface="0 0 10 257 335 0.769 0.025 0.207" data-visibility-attribute="visible">
+					<div class="annotation">High-Speed Charging: IPREMIUM 20W USB-C Power Adapter provides 20W power to fast charge at full speed for new iPhone 14/ 14 Pro Max, or other USB-C devices that support USB Power Delivery. up to 3× faster than the original 5W iPhone Charger.</div>
+				</button>
+				
+				<button slot="hotspot-dot+X-Y+Z" class="dot" data-position="1 -1 1" data-normal="1 0 0"></button>
+				<button slot="hotspot-dim+X-Y" class="dim, dimNum" data-position="1 -1 0" data-normal="1 0 0"></button>
+				<button slot="hotspot-dot+X-Y-Z" class="dot" data-position="1 -1 -1" data-normal="1 0 0"></button>
+				<button slot="hotspot-dim+X-Z" class="dim, dimNum" data-position="1 0 -1" data-normal="1 0 0"></button>
+				<button slot="hotspot-dot+X+Y-Z" class="dot" data-position="1 1 -1" data-normal="0 1 0"></button>
+				<button slot="hotspot-dim+Y-Z" class="dim, dimNum" data-position="0 -1 -1" data-normal="0 1 0"></button>
+				<button slot="hotspot-dot-X+Y-Z" class="dot" data-position="-1 1 -1" data-normal="0 1 0"></button>
+				<svg id="dimLines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="dimensionLineContainer">
+				  <line class="dimensionLine"></line>
+				  <line class="dimensionLine"></line>
+				  <line class="dimensionLine"></line>
+				  <line class="dimensionLine"></line>
+				  <line class="dimensionLine"></line>
+				</svg>
+			  
+				<div id="controls" class="dim">
+				  <label for="show-annotations">Show Annotations:</label>
+				  <input id="show-annotations" type="checkbox" checked="true">
+				  <br>
+				  <br>
+				  <label for="show-dimensions" id="dimLabel">Show Dimensions:</label>
+				  <input id="show-dimensions" type="checkbox" checked="true">
+				</div>
+			  </model-viewer>
+			  
+			  <!-- SCRIPT -->
+			  <script type="module">
+				
+				
+				// COLOR PICKER
+				const modelViewerColor = document.querySelector("model-viewer#model");
+				
+				document.querySelector('#colorSelect').addEventListener('click', (event) => {
+				const colorString = event.target.dataset.color;
+				const [material] = modelViewerColor.model.materials;
+				material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+				});
+				
+				
+				// INFO OVERLAY
+				const modelViewer = document.querySelector('#model');
+				// modelViewer.src = "assets/models/Charger.glb"
+					// No need to spec. the model if there is only one. Will load whatever model is spec.d here even if a different path/file is spec.d above
+				const dimCheck = modelViewer.querySelector('#show-dimensions');
+				const annCheck = modelViewer.querySelector('#show-annotations');
+			  
+				function setVisibility(element) {
+				  if (dimCheck.checked) {
+					element.classList.remove('hide');
+				  } else {
+					element.classList.add('hide');
+				  }
+				}
+			  
+				function setAnno(element) {
+				  if (annCheck.checked) {
+					element.classList.remove('hide');
+				  } else {
+					element.classList.add('hide');
+				  }
+				}
+			  
+				dimCheck.addEventListener('change', () => {
+				  setVisibility(modelViewer.querySelector('#dimLines'));
+				  modelViewer.querySelectorAll('.dimNum').forEach((hotspot) => {
+					setVisibility(hotspot);
+				  });
+				});
+			  
+				annCheck.addEventListener('change', () => {
+				  modelViewer.querySelectorAll('.hotspot').forEach((hotspot) => {
+					setAnno(hotspot);
+				  });
+				});
+			  
+				// update svg
+				function drawLine(svgLine, dotHotspot1, dotHotspot2, dimensionHotspot) {
+				  if (dotHotspot1 && dotHotspot2) {
+					svgLine.setAttribute('x1', dotHotspot1.canvasPosition.x);
+					svgLine.setAttribute('y1', dotHotspot1.canvasPosition.y);
+					svgLine.setAttribute('x2', dotHotspot2.canvasPosition.x);
+					svgLine.setAttribute('y2', dotHotspot2.canvasPosition.y);
+			  
+					// use provided optional hotspot to tie visibility of this svg line to
+					if (dimensionHotspot && !dimensionHotspot.facingCamera) {
+					  svgLine.classList.add('hide');
+					}
+					else {
+					  svgLine.classList.remove('hide');
+					}
+				  }
+				}
+			  
+				const dimLines = modelViewer.querySelectorAll('line');
+			  
+				const renderSVG = () => {
+				  drawLine(dimLines[0], modelViewer.queryHotspot('hotspot-dot+X-Y+Z'), modelViewer.queryHotspot('hotspot-dot+X-Y-Z'), modelViewer.queryHotspot('hotspot-dim+X-Y'));
+				  drawLine(dimLines[1], modelViewer.queryHotspot('hotspot-dot+X-Y-Z'), modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dim+X-Z'));
+				  drawLine(dimLines[2], modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dot-X+Y-Z'));
+				};
+			  
+				modelViewer.addEventListener('camera-change', renderSVG);
+			  
+				modelViewer.addEventListener('load', () => {
+				  const center = modelViewer.getBoundingBoxCenter();
+				  const size = modelViewer.getDimensions();
+				  const x2 = size.x / 2;
+				  const y2 = size.y / 2;
+				  const z2 = size.z / 2;
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dot+X-Y+Z',
+					position: `${center.x + x2} ${center.y - y2} ${center.z + z2}`
+				  });
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dim+X-Y',
+					position: `${center.x + x2 * 1.2} ${center.y - y2 * 1.1} ${center.z}`
+				  });
+				  modelViewer.querySelector('button[slot="hotspot-dim+X-Y"]').textContent =
+					  `${(size.z * 100).toFixed(0)} cm`;
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dot+X-Y-Z',
+					position: `${center.x + x2} ${center.y - y2} ${center.z - z2}`
+				  });
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dim+X-Z',
+					position: `${center.x + x2 * 1.2} ${center.y} ${center.z - z2 * 1.2}`
+				  });
+				  modelViewer.querySelector('button[slot="hotspot-dim+X-Z"]').textContent =
+					  `${(size.y * 100).toFixed(0)} cm`;
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dot+X+Y-Z',
+					position: `${center.x + x2} ${center.y + y2} ${center.z - z2}`
+				  });
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dim+Y-Z',
+					position: `${center.x} ${center.y + y2 * 1.1} ${center.z - z2 * 1.1}`
+				  });
+				  modelViewer.querySelector('button[slot="hotspot-dim+Y-Z"]').textContent =
+					  `${(size.x * 100).toFixed(0)} cm`;
+			  
+				  modelViewer.updateHotspot({
+					name: 'hotspot-dot-X+Y-Z',
+					position: `${center.x - x2} ${center.y + y2} ${center.z - z2}`
+				  });
+			  
+				  renderSVG();
+				});
+			  </script>
+		</div>
+		
+		<!-- DETAILS -->
+		<div id="topRight">
+			
+			<!-- INFO -->
+			<div id="info">
+				<h1>20W USB C Wall Charger Block for iPhone 14/14 Pro/14 Pro Max/14 Plus, iPhone 13/13 Pro/13 Pro Max, iPhone 12/12 Pro Max</h1>
+				<div id="seller">
+					<img src="assets/images/star.png" alt="star">
+					<img src="assets/images/star.png" alt="star">
+					<img src="assets/images/star.png" alt="star">
+					<img id="lastStar" src="assets/images/star.png" alt="star">
+					<p>7,850 reviews</p>
+					<p>Seller: iProduct</p>
+				</div>
+				
+				<h3>Color Selection:</h3>
+				<hr>
+				<div id="colorSelect">
+					<div id="row1">
+						<button data-color="#e3e3e3" id="white">White</button>
+						<button data-color="#171717" id="black">Black</button>
+						<button data-color="#9dc3e4" id="blue">Blue</button>
+					</div>
+					<div id="row2">
+						<button data-color="#9de4c9" id="green">Green</button>
+						<button data-color="#e49dc6" id="pink">Pink</button>
+						<button data-color="#a39de4" id="purple">Purple</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- BUY -->
+			<div id="buy">
+				<h2>$19.99</h2>
+				<p id="discount">-10% (Was: $22.00)</p>
+				<h3>Shipping Details</h3>
+				<hr>
+				<p>Free shipping for 3D-Shop subscribers</p>
+				<p>2 day ground within continental U.S.</p>
+				<button class="addButton" id="cartButton">Add to Cart</button>
+				<button class="addButton" id="buyButton">Buy it Now</button>
+			</div>
+		</div>
+		
+	</div>
+
+	<!-- BOTTOM SECTION -->
+	<div id="bottom">
+		<div id="specs">
+			<h3 id="specTitle">Product Details</h3>
+			<table>
+				<tr>
+					<th>Weight</th>
+					<th>3.2 ounces</th>
+				</tr>
+				<tr>
+					<th>ASIN</th>
+					<th>B0BPK15RGM</th>
+				</tr>
+				<tr>
+					<th>Item model</th>
+					<th>H2305C</th>
+				</tr>
+				<tr>
+					<th>Connectivity</th>
+					<th>USB-C</th>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<th>Wireless</th>
+				</tr>
+				<tr>
+					<th>Manufacturer</th>
+					<th>SHPT Co., Ltd</th>
+				</tr>
+				<tr>
+					<th>Country of origin</th>
+					<th>China</th>
+				</tr>
+			</table>
+		</div>
+		<img src="assets/images/product1.jpg" alt="product image">
+		<img src="assets/images/product2.jpg" alt="product image">
+		<img src="assets/images/product3.jpg" alt="product image">
+		<img src="assets/images/product4.jpg" alt="product image">
+		<img src="assets/images/product5.jpg" alt="product image">
+	</div>
+
+</div>
+</body>
+</html>

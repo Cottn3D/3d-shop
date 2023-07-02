@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D Shop Report</title>    
+	<link rel="stylesheet" href="assets/css/style_report.css">
+
+    <!--IMPORTS MODEL-VIEWER PKG -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+
+</head>
+<body>
+	
+	<!-- NAVBAR -->
+	<a id="top"></a>
+	<div id="nav">
+		<!-- <button id="logo">3D-Shop</button> -->
+		<a href="#intro" class="navLink">Introduction</a>
+		<a href="#lit" class="navLink">Lit Review</a>
+		<a href="#method" class="navLink">Method</a>
+		<a href="#eval" class="navLink">Evaluation</a>
+		<a href="#refs" class="navLink">References</a>
+		<a href="index.html" class="navLink page">Prototype</a>
+		<a href="https://www.amazon.com/Charger-IPREMIUM-Adapter-Samsung-AirPods/dp/B0BPK15RGM/ref=sr_1_48?crid=3REH466MN6CED&keywords=charging%2Bblock&sprefix=charging%2Bblock%2Caps%2C77&sr=8-48&th=1" class="navLink page">Amazon Page</a>
+	</div>
+	
+	<h1>3D-Shop Project Report</h1>
+	<hr>
+	
+	<!-- CONTAINER -->
+	<div id="main">	
+		
+		<!-- OVERVIEW -->
+		<a id="intro"></a>
+		<h2>Introduction</h2>
+		
+				There has been a dearth of research examining the differences between the user experience with typical 2D web pages versus comparable pages including 3D elements. As such, this is the area of research I chose to explore with my capstone project. Most contemporary 3D web research focuses on how 3D graphics can be best applied to specific use-cases. Although it is important to explore these different use-cases, it is also important to know whether a 3D implementation is actually better than a 2D counterpart. Developers would benefit from knowledge of best practices when creating 3D experiences and potentially, practices to avoid. To explore this topic, I created two nearly identical web pages with the difference that one replaces key 2D elements with an interactive 3D implementation. Specifically, this page (3D Shop) was designed to emulate a product page on an online store. Instead of featuring a standalone item description and a set of images showing various angles and views of the product, 3D Shop displays a 3D model accompanied by various interactive elements. On the 3D Shop, available user interactions with the model include: rotating, dragging, zooming, measuring, changing colors, and viewing annotated descriptions of product features. The goal of this project is to determine whether the 2D or 3D implementation provides a better user experience, and what specific interaction elements were good or bad. To enable a thorough comparative analysis, data was be collected with a System Usability Scale via an online survey. This analysis will aim to answer the research question of “How does a 3D online shopping user experience compare to traditional online shopping sites?”.
+			
+		<!-- LIT REVIEW -->
+		<a id="lit"></a>
+		<h2>Literature Review</h2>
+			
+			<h3>Summary of Related Works</h3>
+			<p>
+				[1] Speiginer and MacIntyre created a tool called WebLayer3D that enables developers to use 2D web elements in a 3D web environment. This tool uses a WebGL framework called Three.js to rasterize 2D DOM elements and display them on a plane in a 3D setting. Overall, this tool was successful at accomplishing its goal, but only for 2D elements, not entire 2D web pages. [2] Min et. al. developed a Rich Internet Application (RIA) in Java for viewing medical imaging on a browser instead of specialized software installed locally. The RIA allows for viewing basic 2D images, as well as 3D volumes and surface rendering. Using imaging resources from The Cancer Imaging Archive, asset loading times were found to be comparable to that of local software. [3] Patterson created 3DImpact: a tool used to visualize World Health Organization data in the context of a WebGL globe and with location-based data spikes. A study was performed comparing 3DImpact, 2D chart animations, and tabular data (tables). The animated charts and 3D visualizations were vastly more effective for finding specified data than the data tables. The 3D globe visualization was also found to be significantly more engaging than charts or tables. [4] Jankowski reviewed various studies focusing on interaction techniques applying to the 3D web. The author posited that there are two distinct interfacing schemes on 2D and 3D web apps. Finally, they introduced the concept of Hypertext Virtual Environments (HiVEs) which promotes development practices allowing for standardized interactions on 2D-3D hybrid pages. [5] Liu et. al. developed an indoor navigation tool for hospital patrons so they for directions to different areas. This system uses a WebGL framework called Three.js to convert geospatial coordinates to 2D or 3D maps with search and routing capabilities. [6] Orero et. al. examine existing standards (e.g. ISO and W3C) for immersive subtitles in 3600 Virtual Reality. Furthermore, the authors claim that a Three.js framework called Compare and Contrast allows developers to meet these standards while allowing for displaying subtitles either in front and center view, or to a side window accompanied by a global context map.
+			</p>
+			
+			<h3>Conclusion</h3>
+			<p>
+				Based on the works I reviewed, there are several preexisting research and development efforts focusing on some combination of 2D and 3D functionality on the web [1, 2, 3, 4, 5]. Some of these works also make use of Three.js [1, 5, 6]; the WebGL-based JavaScript library that powers the plugin used for the 3D aspect of project's development. The implementations described above mainly focus on either medical use-cases [2, 3, 5], or developing a 2D-3D hybrid application [1, 2, 4, 5]. Instead of studying how 2D and 3D elements can be combined, my work will mostly focus on the comparison between how users interact with 2D versus 3D web elements, most similar in nature to Patterson's study [3]. Moreover, none of the research detailed above targets e-commerce applications, or user sentiment regarding specific 3D interaction mechanisms of singular product models; both of which will be focal points of my study. As such, these will be the main contributions of my research and development efforts.
+			</p>
+		
+		<!-- METHOD -->
+		<a id="method"></a>
+		<h2>Method</h2>
+		
+			<h3>Overview</h3>
+			<p>
+				The 3D-Shop webpage was designed to closely resemble an Amazon Product Page for a smart phone charging block. The prototype was designed as such in order to allow for an easy comparison between 3D-Shop and the Amazon variant page through the means of a survey taken after participants have had time to explore each page. Specifically, the survey was designed with the aim of learning about participants' experiences with the various 3D interaction features of 3D-Shop that are not present on the Amazon variant page. These features are described in detail in the Implementation section below.
+			</p>
+			<p>
+				Given that this study's main focus is to compare two online shopping pages, inclusion and exclusion criteria for participants are somewhat relaxed. Since online shopping is something of a ubiquitous activity, the only significant criterion for participation is access to a computer with an internet connection. To help control environmental factors, participants are allowed to use only desktop or laptop computers for the study. Being that these are the only requirements that need to be met to participate in the study, recruiting somewhat easy to complete. Recruiting was carried out by making use of personal connections which yielded the added benefit of being able to easily form a representative sample of users based on existing personal knowledge. In this context, 'representative' means that the sample contains participants with various levels of proficiency in internet browsing, online shopping, and 3D interactions.
+			</p>
+			
+			<h3>Implementation</h3>
+			<p>
+				3D-Shop mainly differs from the aforementioned Amazon variant page by replacing some traditional online shopping functionality with a more interactive set of features that are linked to a live 3D model as opposed to the traditional method of portraying the product by using still images and text describing its features. The main features linked to 3D-Shops 3D product model are: 3D camera controls (e.g. pan, zoom, rotate), 3D dimensions overlaid on the model, Annotations linked to meaningful 3D coordinates on the model, and live updating of the model's material and color based on user input. These features are supported by various user interface elements on the product page. Camera controls are signified by an animation of a hand icon rotating the model from side to side with the goal of showing the user that they are interacting with a live 3D model as opposed to the typical still image seen on traditional sites like Amazon. 3D dimensions and annotations are both visible by default, but can be toggled via two respective checkboxes found directly below the model. These options are enabled by default with the goal of showing the users that they in fact exist. During development, it was assumed that 3D interaction concepts would be somewhat foreign to most users and would need to be visibly introduced for understanding to take place. The goal of attaching information such as product feature descriptions and annotations to the model in virtual 3D space was to convey information to users in the context of the product model rather than the context of the page.
+			</p>
+			<p>
+				The prototype for 3D shop was developed in Visual Studio Code using a combination of HTML, CSS, and JavaScript. The 3D model and its related interaction features are enabled by importing a JavaScript package called &lt;model-viewer&gt; which simplifies the complex JavaScript required to create a scene within an HTML Canvas element, render a model in that scene, and control aspects of the scene's environment. Elements of 3D-Shop's 3D interaction such as the annotations and dimensions were created by using pre-packaged &lt;model-viewer&gt; features in combination with custom JavaScript, whereas the color-selection options were created using only simple JavaScript without referencing any &lt;model-viewer&gt; terms.
+			</p>
+		
+		<!-- EVALUATION -->
+		<a id="eval"></a>
+		<h2>Evaluation</h2>
+		
+			<h3>Results</h3>
+			<p>
+				For the entirety of this section, the proposed 3D-interaction variation of the Amazon product page will be referred to as '3D Shop', and the Amazon product page for a phone charger that 3D Shop was based on will simply be referred to as 'Amazon'. Data was collected in this study by using a survey to gather information regarding participants' demographic information, their level of experience and proficiency with technology, and how they felt the 3D-Shop compared to Amazon. Specifically, the procedure required participants to first view the Amazon page, then 3D Shop, then take the survey. In total, 29 participants took part in this study. The pool of participants represented a diverse population of internet users, in accordance with the following demographic datapoints. 
+			</p>
+			<p>
+				On a Likert scale between one (not proficient) and five (expert), the average internet proficiency was 3.69. Reponses regarding online shopping frequency were almost completely divided evenly between 'Weekly' (14 participant) and 'Monthly' (14 participants), and the one remaining individual entered the answer of 'Yearly'. Data regarding participant age was collected by asking participants to identify as one of the following categories: 15-24, 25-34, 35-44, 45-54, 55-64, or 65+. All age groups between 25 years old and 64 years old (25-34, 35-44, 45-54, and 55-64) included between five and seven participants. While the oldest group (65+), and youngest group (15-24) only had three and two participants, respectively. On a Likert scale between one (no experience) and five (expert), the average experience level with virtual 3D interactions was 2.83. 9 participants used a laptop during the study and 19 used a desktop. The remaining participant seemingly misunderstood the questions and responded with the answer of 'Charger'. 11 participants interfaced with the webpages using a trackpad and 18 used a mouse. No participants reported using a touchscreen device. 22 participants completed the study using Google Chrome, 3 used Safari, 2 used Firefox, and 2 used Edge.
+			</p>
+			<p>
+				After collecting basic demographic information and details about proficiency level, the survey presented participants with more targeted Likert-scale questions. These questions were meant to establish a baseline by asking a question about Amazon, then asking the same question about 3D Shop for comparison purposes. When participants were asked how useful they found the features on Amazon's page on a scale from one (not useful) to five (very useful), the average response was 3.93. When the same question was asked about 3D Shop, the average changed to 3.79. On a scale from one (easy) to five (difficult), Amazon's average ease of interaction was 3.14, while 3D Shop's was 2.93. On a scale from one (not engaging) to five (very engaging), Amazon was user engagement was again rated an average of 3.14 while 3D Shop was rated 3.83.
+			</p>
+			<p>
+				Three statistical tests were performed to analyze survey data with the goal of generating statistically significant findings. All three tests conformed to the commonly employed confidence level of (α = 0.05). The tests were supported performed by collecting survey responses to questions designed to target a specific aspect of the user experience on the first site, and then collecting responses from a second question targeting the same characteristic of the user experience provided by the second site. For example, one pair of questions that targeted the same aspect of the user's experience on each site asked participants to rate how engaging they found Amazon's page on a scale of (1 = Not Engaging) to (5 = Very Engaging), then this same question was asked about 3D Shop. Since all participants answered both questions, this allowed for subtracting the engagement score the participant assigned to 3D Shop from the score they assigned to Amazon, resulting in a value representing how much a specific participant's experience changed from one site to the next, and if it changed positively or negatively. This value was also calculated for each remaining participant and summary statistics were calculated from the resulting set of values to represent the average change in engagement across sites and the associated standard deviation (M = 0.69; SD = 1.26). With these variables, a one tailed matched pair t-test was performed with an alternative hypothesis of (H1 : µ_D > 0). This yielded the result of (t(28) = 2.96; p = 0.003). Based on the test results we can reject the null hypothesis that the mean difference in user engagement between sites was equal to zero. The difference in user engagement between 3D Shop (M = 3.83; SD = 0.97) and Amazon (M = 3.14; SD = 0.88) is greater than zero. With a P-value significantly less than the pre-set confidence level (p &lt; α  =>  0.003 &gt; 0.05) there is very strong evidence supporting the claim represented by the alternative hypothesis that 3D Shop is perceived to be significantly more engaging than Amazon.
+			</p>
+			<p>
+				The same process used to analyze the data concerning 'Engagement' was repeated for the other two tests. Upon reviewing the relevant summary statistics of the user experience metrics analyzed by each test, it became apparent that the measures of 'Usefulness' and 'Ease of Use' each produced results that showed little change across the 'Site' variable (e.g. Amazon or 3D Shop). Due to this trend, it made sense to perform two tailed t-tests for these metrics in attempt to support the null hypotheses that these factors showed no significant mean change across sites. As expected, both tests failed to reject their respective null hypotheses, meaning that there is no supporting evidence of any difference in the broader population of users represented by the mean sample values of either metric tested. The test on 'Usefulness' made use of the participant reported data for Amazon (M = 3.93; SD = 0.88) and 3D Shop (M = 3.79; SD = 0.98). The test yielded the result of (t(28) = 0.60; p = 0.56). The test on 'Ease of Use' analyzed the survey data for Amazon (M = 3.14; SD = 1.38) and 3D Shop (M = 2.93, SD = 1.41). The test yielded the result of (t(28) = 0.97; p = 0.34).
+			</p>
+			<p>
+				The survey finally included a set of open-ended short answer questions to allow participants to speak their mind more freely. These questions all focused solely on 3D Shop. To help with analyzing these responses, the short answers were categorized into broader subject areas which are reflected in the following datapoints. As such, some answers were counted in more than one category when applicable. When participants were asked which elements of 3D Shop most greatly improved their experience the following categories were most common. 21 responses involved the ability to rotate the 3D model and view it from any angle they desired. Eight responses mentioned the dimensions overlay, and another eight mentioned the annotation bubbles. When prompted to explain which elements detracted from their experience, 14 participants stated that the annotation bubbles were difficult to read due to them overlapping. Three participants struggled to learn to manipulate the model, and another three had difficulty finding the controls box that turned annotations or dimensions on or off. Interestingly, two participants mentioned that the model color-picker section was located too far down the page to be able to see it and the model at the same time, which was unexpected due to this being tested extensively. Finally, participants were asked which features they would include in future iterations of 3D Shop. Four participants wanted the annotations to be to the side of the model instead of overlayed, three wanted an “object-for-scale” to gauge the model's size (e.g. the model appears alongside a quarter, or banana).
+			</p>
+		
+			<h3>Analysis</h3>
+			<p>
+				The above datapoints are instrumental in answering the research question of “How does a 3D online shopping user experience compare to traditional online shopping sites?”. Based off the results, users 3D Shop and Amazon were shown to be similar for the qualities of ease of use and usefulness. The most significant discovery was that 3D Shop was significantly more engaging than Amazon. It is possible that there were factors that prevented 3D Shop from scoring as well as it could have in any of these metrics, though. For example, 3D Shop was designed and built by only one person over about a month, with a budget of zero whereas Amazon likely differs in those regards greatly. Another factor may be that 3D Shop's development mainly focused on the 3D interaction elements of the page and only developed other features enough that it resembles a realistic shopping page. It is quite possible that extensive testing and updates would have presented that opportunity to improve various aspects of the user experience. One specific feature that would likely have improved 3D Shop's functionality is the ability to show the model, annotations and dimensions in full screen mode. This would have allowed the view of the product to be more immersive, and the overlayed information would not have needed to be as compressed as it was. In fact, this would likely have addressed the pain point most commonly recorded by participants.
+			</p>
+			<p>
+				While participants' responses seemed to indicate that online shopping was a great application of 3D interaction on the web, they also suggested some other areas that might be work looking into during future works. After shopping, the second most popular category was education, third was architecture/real estate, fourth was assembly instructions/manuals, and fifth was guided tourism (e.g. interactive museum tours, 3D geographic points of interest maps). Another area to explore in future works involves other interfacing methods than what this study explores. Since this study focused on just laptops and desktops, a major area left unexplored is smaller devices like tablets and smartphones. Given that these types of devices have become ubiquitous (especially smartphones) this is certainly work further research.
+			</p>
+			
+		<!-- REFERENCES -->
+		<a id="refs"></a>
+		<h2>References</h2>
+			
+			<p>
+				[1]	Gheric Speiginer and Blair Macintyre. 2019. A Practical Approach to Integrating Live 2D Web Content with the Immersive Web. In The 24th International Conference on 3D Web Technology (Web3D '19). Association for Computing Machinery, New York, NY, USA, 1-10. https://doi.org/10.1145/3329714.3338136
+			</p>
+			<p>
+				[2]	Qiusha Min, Neng Liu, and Yating Chen. 2018. A Web-based Medical Image Viewer for 2D and 3D visualization. In Proceedings of the 2018 2nd International Conference on Management Engineering, Software Engineering and Service Sciences (ICMSS 2018). Association for Computing Machinery, New York, NY, USA, 261-264. https://doi.org/10.1145/3180374.3181321
+			</p>
+			<p>
+				[3]	Dale Patterson. 2016. Interactive 3D web applications for visualization of world health organization data. In Proceedings of the Australasian Computer Science Week Multiconference (ACSW '16). Association for Computing Machinery, New York, NY, USA, Article 76, 1-8. https://doi.org/10.1145/2843043.2843477
+			</p>
+			<p>
+				[4]	Jacek Jankowski. 2011. A taskonomy of 3D web use. In Proceedings of the 16th International Conference on 3D Web Technology (Web3D '11). Association for Computing Machinery, New York, NY, USA, 93-100. https://doi.org/10.1145/2010425.2010443
+			</p>
+			<p>
+				[5]	Mengjiao Liu, Liheng Gong, and Xiao Zhang. 2021. Design and Development of Hospital Indoor Navigation System. In 2021 2nd International Conference on Artificial Intelligence and Information Systems (ICAIIS 2021). Association for Computing Machinery, New York, NY, USA, Article 229, 1-8. https://doi.org/10.1145/3469213.3470661
+			</p>
+			<p>
+				[6]	Pilar Orero, Marta Brescia-Zapata, and Chris Hughes. 2021. Evaluating subtitle readability in media immersive environments. In 9th International Conference on Software Development and Technologies for Enhancing Accessibility and Fighting Info-exclusion (DSAI 2020). Association for Computing Machinery, New York, NY, USA, 51-54. https://doi.org/10.1145/3439231.3440602
+			</p>
+		
+	</div>
+			
+	<div id="footLink">
+		<a href="#top">Back to Top</a>
+	</div>
+	
+</body>
+</html>

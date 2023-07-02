@@ -1,0 +1,97 @@
+
+*{
+    font-family:Helvetica, Arial, sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color:lightgrey;
+}
+
+/* LINKS */
+a:link{
+    color:rgb(178, 171, 240);
+}
+a:visited{
+    color:rgb(171, 209, 240);
+}
+a:hover{
+    color:rgb(225, 255, 221);
+}
+a:active{
+    color:rgb(255, 255, 255);
+}
+
+.page:link{
+    color:rgb(230, 54, 54);
+}
+.page:visited{
+    color:rgb(220, 174, 174);
+}
+.page:hover{
+    color:rgb(225, 255, 221);
+}
+.page:active{
+    color:rgb(255, 255, 255);
+}
+
+#footLink{
+    background-color:rgb(41, 35, 57);
+    text-align: center;
+    padding: 30px;
+}
+
+/* SIZES */
+p{
+    font-size:1em;
+    text-align: left;
+}
+
+h1{
+    color:rgb(41, 35, 57);
+    font-size:5em;
+    text-align: center;
+}
+
+h2{
+    margin-top: 100px;
+    font-size:2.5em;
+}
+
+h3{
+    font-size:1.2em;
+    margin-bottom: 0;
+}
+
+/* NAV */
+#nav {
+    background-color: rgb(41, 35, 57);
+    padding: 0 10%;
+    font-weight: bold;
+    display:flex;
+    justify-content: space-between;
+}
+
+.navLink{
+    margin: 20px;
+}
+
+#main{
+    margin: 0 20%;
+    margin-bottom: 100px;
+}
+
+.pics{
+    display:flex;
+}
+
+figcaption{
+    text-align:center;
+    width:400px;
+}
+
+/* Screen breaks */
+@media  screen and (max-width:500px) {
+    
+}

@@ -1,0 +1,506 @@
+
+*{
+    font-family:Helvetica, Arial, sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+/* LINKS */
+a:link{
+    color:rgb(178, 171, 240);
+}
+a:visited{
+    color:rgb(171, 209, 240);
+}
+a:hover{
+    color:rgb(225, 255, 221);
+}
+a:active{
+    color:rgb(255, 255, 255);
+}
+
+/* SIZES */
+p{
+    font-size:1em;
+    text-align: left;
+    margin-left: 10px;
+}
+
+h1{
+    font-size:2.5em;
+    color: rgb(41, 35, 57);
+    text-align: left;
+}
+
+h2{
+    font-size:5em;
+    font-weight: 900;
+    text-align: center;
+    color:red;
+}
+
+h3{
+    font-size:.8em;
+    margin-top:100px;
+    margin-left:10px;
+    color:darkgrey;
+}
+
+hr{
+    width:95%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.225);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* NAV */
+#nav {
+    background-color: rgb(41, 35, 57);
+    margin:0;
+    padding:0;
+    width: 100%;
+    font-weight: bold;
+    display:flex;
+    justify-content: space-between;
+}
+
+#nav input{
+    width:50%;
+    border-radius: 15px;
+    height:40px;
+    margin:15px;
+}
+
+#nav img{
+    display:block;
+    width:40px;
+    margin-top:20px;
+    border-radius: 50%;
+}
+
+#nav button{
+    background-color:#16a4e600;
+    border: none;
+    margin: 0 50px;
+    color:white;
+}
+
+#logo{
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+#cart{
+    margin-top:15px;
+    width:50px;
+    height:50px;
+}
+
+#main{
+    background-color: white;
+    margin:50px 200px;
+}
+
+/* TOP SECTION */
+#top{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* LEFT SECTION */
+#topLeft{
+    flex-grow: 2;
+}
+
+#model{
+    height:60vh;
+    width: 100%;
+}
+
+/* RIGHT SECTION */
+#topRight{
+    display:flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    width:25%;
+}
+
+/* RIGHT #1 */
+#info{
+    width:60%;
+    margin:0 100px;
+}
+
+#seller{
+    margin-top: -20px;
+    display:flex;
+}
+
+#seller img{
+    margin-top:12px;
+    width: 20px;
+    height: 20px;
+}
+
+#lastStar{
+    margin-right:20px;
+}
+
+#colorSelect{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#row1, #row2{
+    display:flex;
+    width:90%;
+    margin: 0 auto;
+}
+
+#colorSelect button{
+    display: block;
+    margin: 10px 20px;
+    height:100px;
+    width:100px;
+    border-radius: 10px;
+    border: none;
+}
+
+#colorSelect button:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#white{
+    background-color:#e3e3e3;
+}
+
+#black{
+    color:white;
+    background-color:#171717;
+}
+
+#blue{
+    background-color:#9dc3e4;
+}
+
+#green{
+    background-color:#9de4c9;
+}
+
+#pink{
+    background-color:#e49dc6;
+}
+
+#purple{
+    background-color:#a39de4;
+}
+
+/* RIGHT #2 */
+#buy{
+    width:40%;
+    border: 1px solid rgba(128, 128, 128, 0.567);
+    border-radius: 10px;
+}
+
+#discount{
+    text-align: center;
+    margin-top: -60px;
+}
+
+.addButton{
+    display: block;
+    margin:10px auto;
+    width:200px;
+    height:40px;
+    font-size: 1em;
+    font-weight:700;
+    border-radius: 10px;
+    color:white;
+}
+
+#cartButton{
+    margin-top: 150px;
+    background-color: rgb(41, 35, 57);
+}
+
+#buyButton{
+    background-color: rgb(57, 145, 233);
+}
+
+/* BOTTOM SECTION */
+#bottom{
+    margin-top: 200px; 
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#specs{
+    margin: 0 auto;
+}
+
+table{
+    padding: 20px 0;
+    border: 1px solid rgba(128, 128, 128, 0.567);
+    border-radius: 10px;
+}
+
+th{
+    padding: 10px 30px;
+}
+
+#specTitle{
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 100px;
+}
+
+#bottom img{
+    width: 80%;
+    margin: 100px auto;
+}
+
+/* INTERACTIVE */
+#controls {
+    position: absolute;
+    bottom: 5px;
+    right: 40%;
+    font-size:1em;
+    max-width: unset;
+    transform: unset;
+    pointer-events: auto;
+    z-index: 100;
+}
+
+.dot{
+    display: none;
+}
+
+.dim{
+    background: #ffffff81;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    display: block;
+    font-size: 0.5em;
+    max-width: 128px;
+    overflow-wrap: break-word;
+    padding: 5px 5px;
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    --min-hotspot-opacity: 0;
+}
+
+.dimensionLineContainer{
+    pointer-events: none;
+    display: block;
+}
+
+.dimensionLine{
+    stroke: #16a5e6;
+    stroke-width: 2;
+    stroke-dasharray: 2;
+}
+
+.hotspot{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.534);
+    box-sizing: border-box;
+    pointer-events: none;
+    --min-hotspot-opacity: 0;
+}
+.annotation{
+    background-color: #aae6bd82;
+    position: absolute;
+    transform: translate(10px, 10px);
+    border-radius: 10px;
+    padding: 10px;
+    width:150px;
+    text-align:left;
+}
+
+.hide{
+display: none;
+}
+
+/* This keeps child nodes hidden while the element loads */
+:not(:defined) > * {
+    display: none;
+}
+
+/* Screen breaks */
+@media  screen and (max-width:500px) {
+    
+    #main, #top, #topLeft, #topRight, #info, #buy{
+        margin:0;
+        padding:0;
+    }
+    
+    #nav{
+        /* width: 100%; */
+        /* display:block; */
+        height: 50px;
+    }
+    
+    #nav input{
+        display:none;
+    }
+    
+    #nav button{
+        margin:0 20px;
+        font-size: 1.2em;
+    }
+    
+    #nav img{
+        width: 30px;
+        margin: 0;
+    }
+    
+    h1{
+       font-size: 1.3em; 
+       text-align: justify;
+    }
+    
+    h2{
+       font-size: 3em; 
+       margin:30px;
+    }
+    
+    h3{
+        text-align: center;
+        font-size: 1.3em;
+    }
+    
+    #top{
+        /* display: block; */
+        flex-direction: column;
+    }
+    
+    #topLeft{
+        /* width:80%; */
+        /* flex-grow: unset; */
+        /* margin: 0; */
+        /* position:absolute; */
+        z-index:1;
+        margin-top: 100px;
+    }
+    
+    #controls{
+        left:5%;
+        padding: 4px 15px;
+        margin: 0 1%;
+        display: flex;
+        font-size:0.8em;
+        /* justify-content: space-between; */
+    }
+    
+    #dimLabel{
+        margin-left: 30px;
+    }
+    
+    model-viewer::part(default-ar-button){
+        bottom: 50px;
+    }
+    
+    #topRight{
+        display:block;
+        width: 84%;
+        margin: 0 8%;
+        /* max-width: 100%; */
+        /* justify-content: unset; */
+    }
+    
+    #seller p{
+        font-size: .8em;
+    }
+    
+    #seller img{
+        width:15px;
+        height:15px;
+    }
+    
+    #info h3{
+        margin-top: 400px;
+        /* margin-bottom: 0px; */
+        /* height:50px; */
+    }
+    
+    #colorSelect{
+        margin:0;
+    }
+    
+    #colorSelect button{
+        height: 40px;
+        margin: 0;
+        margin: 5px 5px;
+    }
+    
+    #info{
+        position: absolute;
+        top:60px;
+        margin:0;
+        width: 84%;
+    }
+    
+    #buy{
+        position:absolute;
+        top:840px;
+        width:80%;
+        margin: 0 2%;
+    }
+    
+    #discount{
+        margin-top: -20px;
+    }
+    
+    #buy h3{
+        margin-top:50px;
+    }
+    
+    #cartButton{
+        margin-top: 50px;
+    }
+    
+    #bottom{
+        /* display:none; */
+        position:absolute;
+        top: 1000px;
+        grid-template-columns: 100%;
+        width:84%;
+        /* left:8%; */
+        margin-left:8%;
+    }
+    
+    #specTitle{
+        padding-top:30px;
+        margin-bottom: 20px;
+    }
+    
+    #bottom table{
+        table-layout:fixed;
+        /* margin-right:8%; */
+        /* padding:10px; */
+        width:100%;
+        /* margin:0 10%; */
+    }
+    
+    #bottom img{
+        width:100%;
+        margin: 20px auto;
+    }
+}
